@@ -16,3 +16,4 @@ import { Progress_cardComponent } from './progress_card/progress_card.component'
   ]
 })
 export class UtilsModule { }
+
