@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { CardComponent } from './dashboard-home/card/card.component';
 import { PatientComponent } from './patient/patient.component';
+import { AddPatientComponent } from './patient/add-pat.component';
 import { UtilsModule } from 'src/utils/utils.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddComponent,
     DashboardHomeComponent,
     CardComponent,
-    PatientComponent
+    PatientComponent,
+    AddPatientComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, FormsModule, UtilsModule, HttpClientModule],
 

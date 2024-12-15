@@ -1,13 +1,69 @@
 <div class="overlay" [hidden]="isAdmin">
 </div>
-<app-progress_card [success]="isAdmin && checkProgress" [show]="!isAdmin" [msg_text]="progressMsg" [warn]="progressWarn" (retry)="onCheckAdmin()"></app-progress_card>
+
+<app-progress_card 
+  [success]="isAdmin && checkProgress" 
+  [show]="!isAdmin" 
+  [msg_text]="progressMsg" 
+  [warn]="progressWarn" 
+  (retry)="onCheckAdmin()">
+</app-progress_card>
 
 <div class="dashboard"></div>
+
 <app-header (onCollapse)="isCollapse = !isCollapse"></app-header>
-<div class="container-fluid m-0">
-  <div class="row m-0">
+
+<div class="container-fluid p-0" style="height: 100vh; overflow-y: auto;">
+  <div class="row m-0" style="height: 100%; overflow-y: auto;">
+    <!-- Sidebar remains the same -->
     <app-sidebar [isCollapsed]="isCollapse"></app-sidebar>
-    <main class="col-md-10 ms-sm-auto col-lg-10 m-0">
+    
+    <main class="col-md-10 ms-sm-auto col-lg-10 p-3" style="overflow-y: auto;">
+      <!-- Condensed Dashboard Section -->
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mt-2">
+          <!-- Active Doctors Card -->
+          <div class="col">
+            <app-card 
+              [background]="'green'" 
+              [title]="'Active Doctors'" 
+              [image]="'user-md'" 
+              [count]="activeDoctors">
+            </app-card>
+          </div>
+          
+          <!-- Total Patients Card -->
+          <div class="col">
+            <app-card 
+              [background]="'orange'" 
+              [title]="'Total Patients'" 
+              [image]="'user-injured'" 
+              [count]="totalPatients">
+            </app-card>
+          </div>
+
+          <!-- Account Balance Card -->
+          <div class="col">
+            <app-card 
+              [title]="'Account Balance'" 
+              [count]="accountBalance | currency:'ETH '"  
+              [image]="'wallet'">
+            </app-card>
+          </div>
+
+          <!-- Total Earnings Card -->
+          <div class="col">
+            <app-card 
+              [title]="'Total Earnings'" 
+              [count]="'234.76 ETH'" 
+              [image]="'money-check-alt'" 
+              [background]="'black-white'">
+            </app-card>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Your existing router outlet remains here -->
       <router-outlet></router-outlet>
     </main>
   </div>
